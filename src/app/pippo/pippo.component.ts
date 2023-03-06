@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pippo',
@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class PippoComponent {
 
+  clickMessage = '';
+
+  onClickDer() {
+    this.clickMessage = 'Der';
+  }
+  onClickDie() {
+    this.clickMessage = 'Die';
+  }
+  onClickDas() {
+    this.clickMessage = 'Das';
+  }
 }
