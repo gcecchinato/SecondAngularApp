@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-import countries from './countries.json';
-import woerter from './woerter.txt';
-
-
+import woerter from './woerter.json';
 
 @Component({
   selector: 'app-pippo',
@@ -13,30 +9,25 @@ import woerter from './woerter.txt';
 export class PippoComponent{
   clickMessage = '';
     title = 'json-file-read-angular';
-    public countryList:{name:string, code:string}[] = countries;
-
-  // public countryList:{name:string, code:string}[] = woerter;
+    public wortList:{artikel:string, wort:string, plural:string, bedeutung:string}[] = woerter;
+    public iNext = 0;
 
   onClickDer() {
-    this.clickMessage = 'Der';
+    this.getNext();
   }
   onClickDie() {
-    this.clickMessage = 'Die';
-    this.clickMessage = this.countryList[0].name.toString();
-
+    this.getNext();
   }
   onClickDas() {
-    this.clickMessage = 'Das';
-  }
+    this.getNext();
+  } 
 
-
-  readFile()
+  getNext()
   {
-    // this.httpClient
-    // .get('assets/woerter.txt', { responseType: 'text' })
-    // .subscribe((data) => {
-    //   console.log(data);
-    // });
-
+    if(this.iNext++ > this.wortList.length)  
+    {
+      this.iNext = 0;
+    }
+    this.clickMessage = this.wortList[this.iNext++].wort;
   }
 }
