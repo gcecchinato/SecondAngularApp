@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { artikelComponent } from './artikel/artikel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { VerbenComponent } from './verben/verben.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    artikelComponent
+    artikelComponent,
+    VerbenComponent
   ],
   imports: [
     BrowserModule,
