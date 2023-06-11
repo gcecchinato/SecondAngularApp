@@ -6,7 +6,7 @@ import verben from './verben.json';
   templateUrl: './verben.component.html',
   styleUrls: ['./verben.component.css']
 })
-export class VerbenComponent {
+export class verbenComponent {
   public b = true;
   public verbenList:{verben:string}[] = verben;
   public next = Math.floor(Math.random() * this.verbenList.length);
@@ -28,7 +28,5 @@ export class VerbenComponent {
       this.clickMessage = line;
     }
     this.b = !this.b;
-
-
   }
 }

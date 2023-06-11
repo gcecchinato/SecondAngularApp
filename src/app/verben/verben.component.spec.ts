@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerbenComponent } from './verben.component';
+import { verbenComponent } from './verben.component';
 
-describe('VerbenComponent', () => {
-  let component: VerbenComponent;
-  let fixture: ComponentFixture<VerbenComponent>;
+describe('verbenComponent', () => {
+  let component: verbenComponent;
+  let fixture: ComponentFixture<verbenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerbenComponent ]
+      declarations: [ verbenComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VerbenComponent);
+    fixture = TestBed.createComponent(verbenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

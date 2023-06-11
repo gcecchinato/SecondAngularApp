@@ -8,23 +8,50 @@ import woerter from './woerter.json';
 })
 export class artikelComponent{
   title = 'json-file-read-angular';
-  public wortList:{artikel:string, wort:string, plural:string, bedeutung:string}[] = woerter;
+  public wortList:{artikel:string, wort:string, plural:string, bedeutung:string, counter:number}[] = woerter;
   public next = Math.floor(Math.random() * this.wortList.length);
   clickMessage = this.wortList[this.next].wort;
+  consecutives = 0;
+  counterMessage = 0;
   onClickDer() {
-    this.getNext("der");
+    this.CheckAnswerAndGetNext("der");
   }
   onClickDie() {
-    this.getNext("die");
+    this.CheckAnswerAndGetNext("die");
   }
   onClickDas() {
-    this.getNext("das");
+    this.CheckAnswerAndGetNext("das");
   } 
-  getNext(artikel:string)
+  CheckAnswerAndGetNext(artikel:string)
   {
-    if(artikel.toLowerCase() != this.wortList[this.next].artikel.toLowerCase())
+    if(artikel.toLowerCase() != this.wortList[this.next].artikel.toLowerCase())//if is wrong
+    {
+      this.consecutives = 0;
+      this.wortList[this.next].counter -=1
       return;
-    this.next = Math.floor(Math.random() * this.wortList.length);
-    this.clickMessage = this.wortList[this.next].wort;
+    }
+    else
+    {
+      this.wortList[this.next].counter +=1;
+      this.consecutives++;
+
+      for (let i = 0; i < 20; i++) 
+      {
+        this.next = Math.floor(Math.random() * this.wortList.length);
+
+        if (typeof this.wortList[this.next].counter === "undefined")
+        {
+          this.wortList[this.next].counter = 0;
+        }
+
+        if(this.wortList[this.next].counter < 3)
+        {
+          this.clickMessage = this.wortList[this.next].wort;
+          break;
+        }
+      }
+    }
+    this.counterMessage = this.consecutives;
   }
+
 }
